@@ -24,7 +24,7 @@ class AuthController extends Controller
     {
         $user_data = Socialite::driver($driver)->user();
         if (User::where('email', $user_data->email)->first()) {
-            $this->login($user_data->id, $user_data->email, $driver);
+            $this->login($user_data->email);
         } else {
             $user = new UserController();
             $user->store($user_data, $driver);
@@ -32,19 +32,16 @@ class AuthController extends Controller
         }
     }
 
-    public function login($id, $email, $driver)
+    public function login($email)
     {
-        $credentials = [
-            'email' => $email,
-            'password' => $id . $email . $driver
-        ];
-        if (Auth::attempt($credentials)) {
-            Session::put('user', $email);
-        } else {
-            return new JsonResponse([
-                'success' => false,
-                'message' => 'E-mail ou senha inválidos'
-            ]);
-        }
+        $user = User::where('email', $email)->first();
+        Auth::login($user);
+        return Redirect::to('/');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return Redirect::to('/');
     }
 }
