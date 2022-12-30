@@ -17,11 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('avatar')->nullable();
+            $table->string('avatar_url')->nullable();
+            $table->string('auth_type');
             $table->text('biography')->nullable();
-            $table->date('birthday');
+            $table->date('birthday')->nullable();
             $table->boolean('composer')->default(false);
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->default(now());
             $table->boolean('illustrator')->default(false);
             $table->boolean('is_active')->default(true);
             $table->boolean('is_admin')->default(false);
@@ -31,7 +32,7 @@ return new class extends Migration
             $table->integer('number_follower')->default(0);
             $table->integer('number_like')->default(0);
             $table->string('password');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->decimal('proof_work_coin')->default(0);
             $table->integer('reputation')->default(0);
             $table->boolean('singer')->default(false);

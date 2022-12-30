@@ -18,7 +18,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'avatar',
+        'avatar_url',
+        'auth_type',
         'biography',
         'birthday',
         'composer',
@@ -32,6 +33,7 @@ class User extends Authenticatable
         'phone',
         'singer',
         'translator',
+        'legal_age',
         'writer',
     ];
 
