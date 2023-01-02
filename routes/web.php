@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +16,3 @@ use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-
-Route::get('/auth/redirect/{driver?}', [AuthController::class, 'loginRedirect'])->name('login.redirect');
-Route::get('/auth/callback/{driver?}', [AuthController::class, 'loginCallback'])->name('login.callback');

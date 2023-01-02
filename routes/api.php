@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('web')->group(function () {
+    Route::get('/auth/redirect/{driver?}', [AuthController::class, 'redirect'])->name('login.redirect');
+    Route::get('/auth/callback/{driver?}', [AuthController::class, 'loginCallback'])->name('login.callback');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });

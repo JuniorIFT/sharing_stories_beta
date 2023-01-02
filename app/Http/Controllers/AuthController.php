@@ -15,7 +15,7 @@ use Illuminate\Http\JsonResponse;
 
 class AuthController extends Controller
 {
-    public function loginRedirect($driver)
+    public function redirect($driver)
     {
         return Socialite::driver($driver)->redirect();
     }
@@ -23,8 +23,11 @@ class AuthController extends Controller
     public function loginCallback($driver)
     {
         $user_data = Socialite::driver($driver)->user();
-        if (User::where('email', $user_data->email)->first()) {
-            $this->login($user_data->email);
+        $user = User::where('email', $user_data->email)->first();
+        if ($user) {
+            Auth::login($user);
+            Session::put('user_id', $user->id);
+            return Redirect::to('/');
         } else {
             $user = new UserController();
             $user->store($user_data, $driver);
@@ -32,16 +35,10 @@ class AuthController extends Controller
         }
     }
 
-    public function login($email)
-    {
-        $user = User::where('email', $email)->first();
-        Auth::login($user);
-        return Redirect::to('/');
-    }
-
     public function logout()
     {
         Auth::logout();
+        Session::flush('user_id');
         return Redirect::to('/');
     }
 }
