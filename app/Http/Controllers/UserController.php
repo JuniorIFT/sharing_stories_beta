@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -50,6 +50,11 @@ class UserController extends Controller
 
         try {
             User::create($user);
+            Auth::login(User::where('email', $user_data->email)->first());
+            return new JsonResponse([
+                'success' => true,
+                'message' => 'Usuário criado com sucesso'
+            ]);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'success' => false,

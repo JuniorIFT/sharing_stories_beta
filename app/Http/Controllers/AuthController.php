@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
@@ -26,11 +25,11 @@ class AuthController extends Controller
         if ($user) {
             Auth::login($user);
             Session::put('user_id', $user->id);
-            return Redirect::to('/');
+            //RETORNAR JSON COM DADOS DO USUARIO
         } else {
             $user = new UserController();
             $user->store($user_data, $driver);
-            return Redirect::to('/');
+            //RETORNAR PAGINA DE LOGIN
         }
     }
 
@@ -38,6 +37,6 @@ class AuthController extends Controller
     {
         Auth::logout();
         Session::flush('user_id');
-        return Redirect::to('/');
+        //RETORNAR PAGINA DE LOGIN
     }
 }
