@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -41,7 +42,7 @@ class UserController extends Controller
         $user = ([
             'name' => $user_data->name,
             'email' => $user_data->email,
-            'password' => Hash::make($user_data->id . $user_data->email . $auth_type),
+            'password' => Hash::make(Str::random(16)),
             'avatar_url' => $user_data->avatar,
             'nickname' => $user_data->nickname,
             'auth_type' => $auth_type
