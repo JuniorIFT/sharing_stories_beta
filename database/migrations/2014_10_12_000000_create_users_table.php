@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('avatar_url')->nullable();
             $table->string('auth_type');
+            $table->string('social_id')->nullable();
+            $table->string('social_token')->nullable();
             $table->text('biography')->nullable();
             $table->date('birthday')->nullable();
             $table->boolean('composer')->default(false);
@@ -31,7 +33,6 @@ return new class extends Migration
             $table->string('nickname')->nullable();
             $table->integer('number_follower')->default(0);
             $table->integer('number_like')->default(0);
-            $table->string('password');
             $table->string('phone')->nullable();
             $table->decimal('proof_work_coin')->default(0);
             $table->integer('reputation')->default(0);

@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -39,28 +37,18 @@ class UserController extends Controller
      */
     public function store($user_data, $auth_type)
     {
-        $user = ([
+        $user = User::updateOrCreate([
+            'social_id' => $user_data->id,
+        ], [
             'name' => $user_data->name,
             'email' => $user_data->email,
-            'password' => Hash::make(Str::random(16)),
+            'social_token' => $user_data->token,
             'avatar_url' => $user_data->avatar,
             'nickname' => $user_data->nickname,
             'auth_type' => $auth_type
         ]);
-
-        try {
-            User::create($user);
-            Auth::login(User::where('email', $user_data->email)->first());
-            return new JsonResponse([
-                'success' => true,
-                'message' => 'Usuário criado com sucesso'
-            ]);
-        } catch (\Exception $e) {
-            return new JsonResponse([
-                'success' => false,
-                'message' => 'Erro ao criar usuário'
-            ]);
-        }
+        Auth::login($user);
+        Session::put('user_id', $user->id);
     }
 
     /**

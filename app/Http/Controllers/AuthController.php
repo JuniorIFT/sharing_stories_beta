@@ -3,13 +3,8 @@
 namespace App\Http\Controllers;
 
 use Laravel\Socialite\Facades\Socialite;
-use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\JsonResponse;
-
-
-
 
 class AuthController extends Controller
 {
@@ -18,25 +13,16 @@ class AuthController extends Controller
         return Socialite::driver($driver)->redirect();
     }
 
-    public function loginCallback($driver)
+    public function loginCallback($driver, UserController $user)
     {
         $user_data = Socialite::driver($driver)->user();
-        $user = User::where('email', $user_data->email)->first();
-        if ($user) {
-            Auth::login($user);
-            Session::put('user_id', $user->id);
-            //RETORNAR JSON COM DADOS DO USUARIO
-        } else {
-            $user = new UserController();
-            $user->store($user_data, $driver);
-            //RETORNAR PAGINA DE LOGIN
-        }
+        $user->store($user_data, $driver);
+        return redirect('/dashboard');
     }
 
     public function logout()
     {
         Auth::logout();
         Session::flush('user_id');
-        //RETORNAR PAGINA DE LOGIN
     }
 }

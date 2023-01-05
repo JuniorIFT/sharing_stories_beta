@@ -20,6 +20,8 @@ class User extends Authenticatable
     protected $fillable = [
         'avatar_url',
         'auth_type',
+        'social_id',
+        'social_token',
         'biography',
         'birthday',
         'composer',
@@ -29,7 +31,6 @@ class User extends Authenticatable
         'nickname',
         'number_follower',
         'number_like',
-        'password',
         'phone',
         'singer',
         'translator',
