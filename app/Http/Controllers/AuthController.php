@@ -14,7 +14,7 @@ class AuthController extends Controller
         return Socialite::driver($driver)->redirect();
     }
 
-    public function loginCallback($driver, UserController $user)
+    public function callback($driver, UserController $user)
     {
         if ($user_data = Socialite::driver($driver)->user()) {
             $user->store($user_data, $driver);

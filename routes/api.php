@@ -20,6 +20,6 @@ use App\Http\Controllers\AuthController;
 */
 
 
-Route::get('/auth/redirect/{driver?}', [AuthController::class, 'redirect'])->name('login.redirect');
-Route::get('/auth/callback/{driver?}', [AuthController::class, 'loginCallback'])->name('login.callback');
+Route::get('/auth/redirect/{driver?}', [AuthController::class, 'redirect'])->name('redirect');
+Route::get('/auth/callback/{driver?}', [AuthController::class, 'callback'])->name('callback');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

@@ -10,8 +10,9 @@
 
 <body>
 
-    <a href="{{ route('login.redirect') . '/google' }}">GOOGLE</a>
-    <a href="{{ route('login.redirect') . '/facebook' }}">FACEBOOK</a>
+    <a href="{{ route('redirect') . '/google' }}">GOOGLE</a>
+    <a href="{{ route('redirect') . '/facebook' }}">FACEBOOK</a>
+    <a href="{{ route('redirect') . '/twitter' }}">TWITTER</a>
 
 </body>
 
