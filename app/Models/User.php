@@ -53,8 +53,14 @@ class User extends Authenticatable
         'email_verified_at',
         'social_id',
         'social_token',
-        'birthday',
-        'legal_age',
+        'auth_type',
+        'composer',
+        'proof_work_coin',
+        'singer',
+        'translator',
+        'phone',
+        'updated_at',
+
     ];
 
     /**
