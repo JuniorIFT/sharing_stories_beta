@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
@@ -22,12 +21,5 @@ class UserController extends Controller
             'auth_type' => $auth_type
         ]);
         Auth::login($user);
-    }
-
-
-    public function edit()
-    {
-        $user = Auth::user();
-        return view('edit', compact('user'));
     }
 }
