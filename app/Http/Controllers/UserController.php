@@ -22,4 +22,40 @@ class UserController extends Controller
         ]);
         Auth::login($user);
     }
+
+    public function dashboard()
+    {
+    }
+
+    public function editProfile()
+    {
+    }
+
+    public function updateProfile()
+    {
+    }
+
+    public function editAvatar()
+    {
+    }
+
+    public function updateAvatar()
+    {
+    }
+
+    public function editBiography()
+    {
+    }
+
+    public function updateBiography()
+    {
+    }
+
+    public function editPhone()
+    {
+    }
+
+    public function updatePhone()
+    {
+    }
 }
