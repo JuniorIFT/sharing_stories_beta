@@ -50,12 +50,4 @@ class UserController extends Controller
     public function updateBiography()
     {
     }
-
-    public function editPhone()
-    {
-    }
-
-    public function updatePhone()
-    {
-    }
 }

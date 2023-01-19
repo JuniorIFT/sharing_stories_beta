@@ -33,7 +33,6 @@ return new class extends Migration
             $table->string('nickname')->nullable();
             $table->integer('number_follower')->default(0);
             $table->integer('number_like')->default(0);
-            $table->string('phone')->nullable();
             $table->decimal('proof_work_coin')->default(0);
             $table->integer('reputation')->default(0);
             $table->boolean('singer')->default(false);

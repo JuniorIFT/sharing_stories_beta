@@ -31,7 +31,6 @@ class User extends Authenticatable
         'nickname',
         'number_follower',
         'number_like',
-        'phone',
         'singer',
         'translator',
         'legal_age',
@@ -58,7 +57,6 @@ class User extends Authenticatable
         'proof_work_coin',
         'singer',
         'translator',
-        'phone',
         'updated_at',
 
     ];
