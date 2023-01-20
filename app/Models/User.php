@@ -23,6 +23,7 @@ class User extends Authenticatable
         'social_id',
         'social_token',
         'biography',
+        'genre',
         'birthday',
         'composer',
         'email',

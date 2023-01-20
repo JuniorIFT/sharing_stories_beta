@@ -31,6 +31,7 @@ return new class extends Migration
             $table->boolean('is_banned')->default(false);
             $table->boolean('is_moderator')->default(false);
             $table->string('nickname')->nullable();
+            $table->string('genre')->nullable();
             $table->integer('number_follower')->default(0);
             $table->integer('number_like')->default(0);
             $table->decimal('proof_work_coin')->default(0);
