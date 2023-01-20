@@ -25,29 +25,17 @@ class UserController extends Controller
 
     public function dashboard()
     {
+        return view('dashboard');
     }
 
     public function editProfile()
     {
+        return view('edit-profile');
     }
 
-    public function updateProfile()
+    public function profile()
     {
-    }
-
-    public function editAvatar()
-    {
-    }
-
-    public function updateAvatar()
-    {
-    }
-
-    public function editBiography()
-    {
-    }
-
-    public function updateBiography()
-    {
+        $user = Auth::user()->toArray();
+        dd($user);
     }
 }

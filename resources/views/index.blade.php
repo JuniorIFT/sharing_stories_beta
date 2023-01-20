@@ -13,6 +13,7 @@
     <a href="{{ route('redirect') . '/google' }}">GOOGLE</a>
     <a href="{{ route('redirect') . '/facebook' }}">FACEBOOK</a>
     <a href="{{ route('redirect') . '/twitter' }}">TWITTER</a>
+    <a href="{{ route('profile') }}">PERFIL</a>
 
 </body>
 

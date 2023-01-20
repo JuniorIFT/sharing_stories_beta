@@ -17,7 +17,7 @@ class AuthController extends Controller
     {
         if ($user_data = Socialite::driver($driver)->user()) {
             $user->store($user_data, $driver);
-            return redirect('/dashboard');
+            return redirect('/');
         } else {
             return new JsonResponse([
                 'message' => 'Erro ao fazer login com o ' . $driver,
