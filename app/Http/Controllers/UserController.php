@@ -28,14 +28,14 @@ class UserController extends Controller
         return view('dashboard');
     }
 
-    public function editProfile()
-    {
-        return view('edit-profile');
-    }
-
     public function profile()
     {
-        $user = Auth::user()->toArray();
-        dd($user);
+    }
+
+    public function editProfile()
+    {
+        $user_id = Auth::id();
+        $user = User::select('avatar_url', 'name', 'email', 'nickname', 'biography', 'genre')->where('id', $user_id)->first();
+        return view('profile', compact('user'));
     }
 }

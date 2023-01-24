@@ -9,10 +9,30 @@
 </head>
 
 <body>
-    <h1>Profile</h1>
-    <p>Nome: {{ $user->email }}</p>
-
-
+    <!-- Crie input para edição dos campos -->
+    <form action="" method="POST">
+        @csrf
+        @method('PUT')
+        <label for="avatar_url">Avatar</label>
+        <input type="text" name="avatar_url" value="{{ $user->avatar_url }}">
+        <br>
+        <label for="name">Nome</label>
+        <input type="text" name="name" value="{{ $user->name }}">
+        <br>
+        <label for="email">Email</label>
+        <input type="text" name="email" value="{{ $user->email }}">
+        <br>
+        <label for="biography">Biografia</label>
+        <input type="text" name="biography" value="{{ $user->biography }}">
+        <br>
+        <label for="nickname">Apelido</label>
+        <input type="text" name="nickname" value="{{ $user->nickname }}">
+        <br>
+        <label for="genre">Gênero</label>
+        <input type="text" name="genre" value="{{ $user->genre }}">
+        <br>
+        <button type="submit">Salvar</button>
+    </form>
 </body>
 
 </html>

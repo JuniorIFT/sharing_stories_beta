@@ -59,6 +59,10 @@ class User extends Authenticatable
         'singer',
         'translator',
         'updated_at',
+        'legal_age',
+        'illustrator',
+        'birthday',
+
 
     ];
 
